@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+	<head>
+		<script>
+			var state = [];
+			function seticon(id) {
+				chrome.pageAction.setIcon({
+					"tabId":id,
+					"path":"on.png"
+				});
+			};
+			chrome.pageAction.onClicked.addListener(
+				function(tab) {
+					state[tab.id] = true;
+					seticon(tab.id);
+					chrome.tabs.sendRequest(tab.id, {});
+				}
+			);
+			chrome.extension.onRequest.addListener(
+				function(req, sender, c) {
+					var tab = sender.tab;
+					if (state[tab.id]) {
+						seticon(tab.id);
+					}
+					chrome.pageAction.show(tab.id);
+					c({on:!!state[tab.id]});
+				}
+			);
+		</script>
+	</head>
+</html>

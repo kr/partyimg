@@ -1,0 +1,19 @@
+{
+	"name": "partyimg",
+	"version": "0.1",
+	"description": "Party mode for vastimg.",
+	"background_page": "background.html",
+	"page_action": {
+		"default_icon": "off.png",
+		"default_title": "Party Mode"
+	},
+	"content_scripts": [
+		{
+			"matches": ["*://vastimg.herokuapp.com/*"],
+			"js": ["page.js"]
+		}
+	],
+	"permissions": [
+		"*://vastimg.herokuapp.com/"
+	]
+}
