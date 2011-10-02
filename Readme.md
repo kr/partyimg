@@ -1,5 +1,7 @@
 # Vastimg Party Mode
 
+Run this in the background at your next party.
+
 ## Install
 
 If you have ever made a chrome extension, you'll know
